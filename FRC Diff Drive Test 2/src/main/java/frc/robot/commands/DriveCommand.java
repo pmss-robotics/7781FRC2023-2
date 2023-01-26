@@ -41,9 +41,4 @@ public class DriveCommand extends CommandBase {
     Robot.driveSubsystem.stop();
   }
 
-  // Ends when the command is interrupted
-  @Override
-  public void interrupted() {
-    end();
-  }
 }

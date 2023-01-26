@@ -42,6 +42,15 @@ public class Robot extends TimedRobot {
   public static DriveSubsystem driveSubsystem = new DriveSubsystem();
   public static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public static PunchSubsystem punchSubsystem = new PunchSubsystem();
+  // Instantiation of Compressor
+  Compressor compressor = new Compressor();
+  // Instantiations of commands used in Robot
+
+  Command autoCommand = new AutoCommand();
+  Command driveCommand = new DriveCommand();
+  Command driveForwardTimeoutCommand = new DriveForwardTimeoutCommand();
+  Command driveToDistanceCommand = new DriveToDistanceCommand(5, .5);
+  SendableChooser<Command> m_chooser = new SendableChooser<>();
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -106,7 +115,7 @@ public class Robot extends TimedRobot {
     // teleop starts running. If you want the autonomous to
     // continue until interrupted by another command, remove
     // this line or comment it out.
-    driveCommand.start();
+    driveCommand.execute();
 
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
